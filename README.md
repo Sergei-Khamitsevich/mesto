@@ -13,4 +13,4 @@
 8. JavaScript
 9. Псеводклассы и пвсевдоэлементы
 10. Адаптивная верстка
-13. Ссылка на страницу [https://sergei-khamitsevich.github.io/russian-travel/index.html]
+13. Ссылка на страницу [https://sergei-khamitsevich.github.io/mesto/index.html]
