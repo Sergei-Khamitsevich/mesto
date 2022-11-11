@@ -1,26 +1,33 @@
-let editProfile = document.querySelector('.profile__edit-button');
-let popup = document.querySelector('.popup');
-let popupClose = popup.querySelector('.popup__close');
+// объявляем переменные
+const editProfile = document.querySelector('.profile__edit-button');
+const popup = document.querySelector('.popup');
+const popupClose = popup.querySelector('.popup__close');
 
-let popupVisability = function() {
-  popup.classList.toggle('popup_opened');
+const popupForm = popup.querySelector('.popup__form');
+const popupName = popupForm.querySelector('.popup__item_type_name');
+const popupDescription = popupForm.querySelector('.popup__item_type_description');
+const profile = document.querySelector('.profile');
+const profileTitle = profile.querySelector('.profile__titile');
+const profileSubtitle = profile.querySelector('.profile__subtitle');
+
+const openPopup = function() {
+  popup.classList.add('popup_opened');//открытие попапа
 }
 
-editProfile.addEventListener('click', popupVisability);
-popupClose.addEventListener('click', popupVisability);
+const closePopup = function() {
+  popup.classList.remove('popup_opened'); // закрытие попапа
+}
 
-let popupForm = popup.querySelector('.popup__form');
-let popupName = popupForm.querySelector('.popup__item_type_name');
-let popupDescription = popupForm.querySelector('.popup__item_type_description');
-let profile = document.querySelector('.profile');
-let profileTitle = profile.querySelector('.profile__titile');
-let profileSubtitle = profile.querySelector('.profile__subtitle');
-
-let formSubmitHandler = function(evt) {
+// функция ввода данных и закрытие на enter
+const formSubmitHandler = function(evt) {
   evt.preventDefault();
   profileTitle.textContent = popupName.value;
   profileSubtitle.textContent = popupDescription.value;
-  popupVisability();
+  closePopup();
 }
+// навешиваю слушатели
+editProfile.addEventListener('click', openPopup);
+
+popupClose.addEventListener('click', closePopup);
 
 popupForm.addEventListener('submit', formSubmitHandler);
