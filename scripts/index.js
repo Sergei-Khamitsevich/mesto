@@ -11,7 +11,9 @@ const profileTitle = profile.querySelector('.profile__titile');
 const profileSubtitle = profile.querySelector('.profile__subtitle');
 
 const openPopup = function() {
-  popup.classList.add('popup_opened');//открытие попапа
+  popup.classList.add('popup_opened'); //открытие попапа
+  popupName.value = profileTitle.textContent; // данные из заголовка
+  popupDescription.value = profileSubtitle.textContent; // данные из описания
 }
 
 const closePopup = function() {

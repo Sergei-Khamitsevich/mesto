@@ -1,10 +1,15 @@
 .element__name-button {
   background-image: url(../../../images/heart.svg);
   border: none;
-	cursor: pointer;
+  cursor: pointer;
   width: 22px;
   height: 19px;
   padding: 0;
   margin: 5px 5px 0 0;
   align-self: center;
+  transition: opacity 0.2s linear;
+}
+
+.element__name-button:hover {
+  opacity: 0.5;
 }

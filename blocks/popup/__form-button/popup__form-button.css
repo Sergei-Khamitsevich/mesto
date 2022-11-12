@@ -12,6 +12,11 @@
   border: none;
   margin: 18px 36px 37px;
   cursor: pointer;
+  transition: opacity 0.2s linear;
+}
+
+.popup__form-button:hover {
+  opacity: 0.8;
 }
 
 @media screen and (max-width: 430px) {
