@@ -1,4 +1,4 @@
-.element__name-button {
+.element__like {
   background-image: url(../../../images/heart.svg);
   border: none;
   cursor: pointer;
@@ -10,6 +10,6 @@
   transition: opacity 0.2s linear;
 }
 
-.element__name-button:hover {
+.element__like:hover {
   opacity: 0.5;
 }
