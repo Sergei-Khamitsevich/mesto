@@ -1,31 +1,27 @@
-// объявляем переменные
-// переменные с попапом профиля
-const popupEdit = document.querySelector('.popup_type_edit');
+// переменные профиля
+const profile = document.querySelector('.profile');
 const profileTitle = profile.querySelector('.profile__titile');
 const profileSubtitle = profile.querySelector('.profile__subtitle');
 
-const editProfile = document.querySelector('.profile__edit-button');
-
-const profileAddCard = document.querySelector('.profile__add-button');
-
-const popupAddCard = document.querySelector('.popup_type_add');
-
-const popupEditClose = popupEdit.querySelector('.popup__close');
-
-const popupCardClose = popupAddCard.querySelector('.popup__close');
-
+// переменны попапа профиля
+const popupEdit = document.querySelector('.popup_type_edit');
 const popupForm = popupEdit.querySelector('.popup__form');
-
+const popupEditClose = popupEdit.querySelector('.popup__close');
 const popupName = popupForm.querySelector('.popup__item_type_name');
-
 const popupDescription = popupForm.querySelector('.popup__item_type_description');
 
-const profile = document.querySelector('.profile');
+// переменные с попапом добавления карточки
+const popupAddCard = document.querySelector('.popup_type_add');
+const formCreatCard = popupAddCard.querySelector('.popup__form');
+const nameCard = formCreatCard.querySelector('.popup__item_type_title');
+const linkCard = formCreatCard.querySelector('.popup__item_type_link');
+const popupCardClose = popupAddCard.querySelector('.popup__close');
 
+console.log(linkCard)
 
-
-
-
+// переменные кнопок
+const editProfile = document.querySelector('.profile__edit-button');
+const profileAddCard = document.querySelector('.profile__add-card');
 
 
 const openPopup = function(popup) {
@@ -47,20 +43,21 @@ const formSubmitHandler = function(evt) {
   closePopup(popupEdit);
 }
 
+
 // навешиваю слушатели
-editProfile.addEventListener('click', () => {
+editProfile.addEventListener('click', () => { //открытия попапа профиля
   openPopup(popupEdit);
 });
 
-profileAddCard.addEventListener('click', () => {
+profileAddCard.addEventListener('click', () => { //открытия попапа добавления
   openPopup(popupAddCard);
 });
 
-popupEditClose.addEventListener('click', () => {
+popupEditClose.addEventListener('click', () => { //закрытия попапа профиля
   closePopup(popupEdit);
 });
 
-popupCardClose.addEventListener('click', () => {
+popupCardClose.addEventListener('click', () => { //закрытия попапа добавления
   closePopup(popupAddCard);
 });
 
@@ -116,7 +113,6 @@ const card = document.querySelector('.card').content;
  }
 
 
-
 // Перебираю массив
 const renderCard = () => {
   initialCards.forEach(item => {
@@ -126,5 +122,13 @@ const renderCard = () => {
 });}
 
 renderCard()
+//добавление карточки из попапа
+const creatCard = evt => {
+  evt.preventDefault();
+  const titleCard = nameCard.value;
+  const imageCard = linkCard.value;
+  elements.prepend(addCard(titleCard, imageCard));
+  closePopup(popupAddCard);
+}
 
-
+formCreatCard.addEventListener('submit', creatCard);

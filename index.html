@@ -24,7 +24,7 @@
           </div>
           <button class="profile__edit-button hover-opacity" type="button"></button>
         </div>
-        <button class="profile__add-button hover-opacity" type="button"></button>
+        <button class="profile__add-card hover-opacity" type="button"></button>
       </section>
 
       <section class="elements">
@@ -38,7 +38,7 @@
 
     <template class="card">
       <article class="element">
-        <img src="" class="element__image" alt="Гора Эльбрус">
+        <img src="" class="element__image" alt="">
         <button class="delete-image"></button>
         <div class="element__name">
           <h2 class="element__name-title"></h2>
@@ -62,10 +62,10 @@
     <div class="popup popup_type_add">
       <div class="popup__container">
         <button class="popup__close hover-opacity" type="button"></button>
-        <form class="popup__form" name="edit">
+        <form class="popup__form" name="add-card">
           <h2 class="popup__form-heading">Новое место</h2>
-          <input type="text" class="popup__item popup__item_type_name" value="" name="name" placeholder="">
-          <input type="text" class="popup__item popup__item_type_description" value="" name="desription" placeholder="">
+          <input type="text" class="popup__item popup__item_type_title" value="" name="title" placeholder="Название">
+          <input type="text" class="popup__item popup__item_type_link" value="" name="link" placeholder="Ссылка на картинку">
           <button class="popup__form-button" type="submit">Создать</button>
         </form>
       </div>
