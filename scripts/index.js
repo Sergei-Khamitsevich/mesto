@@ -17,8 +17,6 @@ const nameCard = formCreatCard.querySelector('.popup__item_type_title');
 const linkCard = formCreatCard.querySelector('.popup__item_type_link');
 const popupCardClose = popupAddCard.querySelector('.popup__close');
 
-console.log(linkCard)
-
 // переменные кнопок
 const editProfile = document.querySelector('.profile__edit-button');
 const profileAddCard = document.querySelector('.profile__add-card');
