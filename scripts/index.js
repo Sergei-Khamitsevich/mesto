@@ -80,7 +80,7 @@ const linkCard = formCreatCard.querySelector('.popup__item_type_link');
 const popupCardClose = popupAddCard.querySelector('.popup__close');
 
 //Переменные с попапом картинки
-const cardContainer = document.querySelector('.popup_type_сard');
+const cardContainer = document.querySelector('.popup_type_card');
 const popupCard = cardContainer.querySelector('.popup__card');
 const popupImage = popupCard.querySelector('.popup__card-image');
 const cardText = popupCard.querySelector('.popup__card-text');
