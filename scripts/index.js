@@ -9,13 +9,14 @@ const popupFormEdit = popupEdit.querySelector('.popup__form');
 const popupEditClose = popupEdit.querySelector('.popup__close');
 const popupName = popupFormEdit.querySelector('.popup__item_type_name');
 const popupDescription = popupFormEdit.querySelector('.popup__item_type_description');
-console.log(popupName, popupDescription)
+
 // переменные кнопок
 const editProfile = document.querySelector('.profile__edit-button');
 const profileAddCard = document.querySelector('.profile__add-card');
 
 const openPopup = function(popup) {
   popup.classList.add('popup_opened'); //открытие попапа
+  document.addEventListener('keydown', closeEscPopup)//вызываем закрытие попопа Esc
 }
 
 const closePopup = function(popup) {
@@ -23,7 +24,7 @@ const closePopup = function(popup) {
 }
 
 // функция ввода данных и закрытие на enter
-const ProfileSubmitHandler = function(evt) {
+const profileSubmitHandler = function(evt) {
   evt.preventDefault();
   profileTitle.textContent = popupName.value;
   profileSubtitle.textContent = popupDescription.value;
@@ -41,7 +42,7 @@ popupEditClose.addEventListener('click', () => { //закрытия попапа
   closePopup(popupEdit);
 });
 
-popupFormEdit.addEventListener('submit', ProfileSubmitHandler);
+popupFormEdit.addEventListener('submit', profileSubmitHandler);
 
 // переменные с попапом добавления карточки
 const popupAddCard = document.querySelector('.popup_type_add');
@@ -108,6 +109,7 @@ const createNewCard = evt => {
 popupAddCard.addEventListener('submit', createNewCard);
 
 profileAddCard.addEventListener('click', () => { //открытия попапа добавления карточки
+  formCreatCard.reset();// удаление введённых данных
   openPopup(popupAddCard);
 });
 
@@ -117,4 +119,18 @@ popupCardClose.addEventListener('click', () => { //закрытия попапа
 
 cardClose.addEventListener('click', () => { // закрытие попапа карточки
   closePopup(cardContainer)
+})
+
+//закрытие попапа на Esc
+function closeEscPopup(event) {
+  if (event.key === 'Escape') {
+    closePopup(document.querySelector('.popup_opened'));
+  }
+};
+
+//закрытие поапа при клике на overlay
+document.addEventListener('click', (evt) => {
+  if(evt.target.classList.contains('popup')) {
+    closePopup(evt.target)
+  }
 })

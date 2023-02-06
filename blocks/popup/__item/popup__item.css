@@ -3,7 +3,7 @@
   font-size: 14px;
   line-height: 17px;
   color: #000000;
-  margin: 0 36px 30px;
+  margin: 0 36px;
   min-height: 27px;
   max-width: 358px;
   border: none;
@@ -11,10 +11,11 @@
   box-sizing: border-box;
   padding: 0;
   padding-bottom: 13px;
+  outline: none;
 }
 
 @media screen and (max-width: 430px) {
   .popup__item {
-    margin: 0 22px 30px;
+    margin: 0 30px;
   }
 }
