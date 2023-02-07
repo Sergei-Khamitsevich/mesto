@@ -38,9 +38,17 @@ const hasInvalidInput = (inputList) => {
 const toggleButtonState = (inputList, buttonElement, config) => {
   if(hasInvalidInput(inputList)) {
     buttonElement.classList.add(config.inactiveButtonClass)
+    buttonElement.setAttribute('disabled', 'true')
   } else {
     buttonElement.classList.remove(config.inactiveButtonClass)
+    buttonElement.removeAttribute('disabled')
   }
+}
+
+const disableButtonState = (formElement, config) => {
+  const disableButton = formElement.querySelector(config.submitButtonSelector)
+  disableButton.classList.add(config.inactiveButtonClass)
+  disableButton.setAttribute('disabled', 'true')
 }
 
 const setEventListeners = (formElement, config) => {
@@ -60,6 +68,7 @@ const enableValidation = (config) => {
   formList.forEach((formElement) => {
     formElement.addEventListener('submit', (evt) => {
       evt.preventDefault()
+      disableButtonState (formElement, config)
     })
     setEventListeners(formElement,config)
   })

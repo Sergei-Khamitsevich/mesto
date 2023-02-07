@@ -20,11 +20,12 @@ const openPopup = function(popup) {
 }
 
 const closePopup = function(popup) {
-  popup.classList.remove('popup_opened'); // закрытие попапа
+  popup.classList.remove('popup_opened');// закрытие попапа
+  document.removeEventListener('keydown', closeEscPopup)
 }
 
 // функция ввода данных и закрытие на enter
-const profileSubmitHandler = function(evt) {
+const handleProfileFormSubmit = function(evt) {
   evt.preventDefault();
   profileTitle.textContent = popupName.value;
   profileSubtitle.textContent = popupDescription.value;
@@ -42,7 +43,7 @@ popupEditClose.addEventListener('click', () => { //закрытия попапа
   closePopup(popupEdit);
 });
 
-popupFormEdit.addEventListener('submit', profileSubmitHandler);
+popupFormEdit.addEventListener('submit', handleProfileFormSubmit);
 
 // переменные с попапом добавления карточки
 const popupAddCard = document.querySelector('.popup_type_add');
