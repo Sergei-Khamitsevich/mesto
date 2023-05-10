@@ -79,6 +79,18 @@ class FormValidator {
       evt.preventDefault();
     });
   }
+
+  resetError() {
+    this._inputList.forEach((inputElement) => {
+      this._errorELement = this._formElement.querySelector(
+        `.${inputElement.id}-error`
+      );
+      if (!inputElement.validity.valid) {
+        this._hideInputError(inputElement, this._errorELement);
+      }
+    });
+    this._disableButton();
+  }
 }
 
 export default FormValidator;

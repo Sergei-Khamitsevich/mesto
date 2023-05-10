@@ -57,6 +57,8 @@ const handleProfileFormSubmit = function (evt) {
 // навешиваю слушатели
 editProfile.addEventListener("click", () => {
   //открытия попапа профиля
+  popupFormEdit.reset();
+  formValidEdit.resetError();
   popupName.value = profileTitle.textContent; // данные из заголовка
   popupDescription.value = profileSubtitle.textContent; // данные из описания
   openPopup(popupEdit);
@@ -93,6 +95,7 @@ popupAddCard.addEventListener("submit", createNewCard);
 profileAddCard.addEventListener("click", () => {
   //открытие попапа добавления карточки
   formCreatCard.reset(); // удаление введённых данных
+  formValidCreatCard.resetError();
   openPopup(popupAddCard);
 });
 

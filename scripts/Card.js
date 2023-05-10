@@ -45,7 +45,7 @@ class Card {
   // попап карточки
   _openCardPopup = () => {
     this._popupImage.src = this._link;
-    this._popupImage.alt = this._link;
+    this._popupImage.alt = this._name;
     this._cardText.textContent = this._name;
     openPopup(cardContainer);
   };
