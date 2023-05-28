@@ -1,27 +1,27 @@
 // массив с данными карточек
 const initialCards = [
   {
-    name: "Архыз",
+    title: "Архыз",
     link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
   },
   {
-    name: "Челябинская область",
+    title: "Челябинская область",
     link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg",
   },
   {
-    name: "Иваново",
+    title: "Иваново",
     link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg",
   },
   {
-    name: "Камчатка",
+    title: "Камчатка",
     link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg",
   },
   {
-    name: "Холмогорский район",
+    title: "Холмогорский район",
     link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg",
   },
   {
-    name: "Байкал",
+    title: "Байкал",
     link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
   },
 ];
@@ -33,5 +33,22 @@ const validationConfig = {
   inputErrorClass: "popup__item_type_error",
   errorClass: "popup__item-error_visible",
 };
+//поиск формы редактирования
+const popupEdit = document.querySelector(".popup_type_edit");
+const popupFormEdit = popupEdit.querySelector(".popup__form");
+//поиск формы создания карточки
+const popupAddCard = document.querySelector(".popup_type_add");
+const formCreatCard = popupAddCard.querySelector(".popup__form");
 
-export { initialCards, validationConfig };
+const profileEditButton = document.querySelector(".profile__edit-button");
+//переменная кнопки попапа добавления карточки
+const createCardButton = document.querySelector(".profile__add-card");
+
+export {
+  initialCards,
+  validationConfig,
+  popupFormEdit,
+  formCreatCard,
+  profileEditButton,
+  createCardButton,
+};

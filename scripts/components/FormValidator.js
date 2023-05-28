@@ -79,7 +79,7 @@ class FormValidator {
       evt.preventDefault();
     });
   }
-
+  // cброс ошибок и дизейбл кнопки
   resetError() {
     this._inputList.forEach((inputElement) => {
       this._errorELement = this._formElement.querySelector(

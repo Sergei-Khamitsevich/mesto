@@ -1,11 +1,12 @@
-import { openPopup, cardContainer } from "./index.js";
 class Card {
-  constructor(data, templateSelector) {
-    this._name = data.name; // название карточки из массива
+  constructor(data, templateSelector, handleCardClick) {
+    this._data = data;
+    this._name = data.title; // название карточки из массива
     this._link = data.link; // картинка карточки из массива
     this._templateSelecor = templateSelector; // сюда будет передаваться селектор темплейта, который и будут обрабатывать методы
     this._popupImage = document.querySelector(".popup__card-image");
     this._cardText = document.querySelector(".popup__card-text");
+    this._handleCardClick = handleCardClick;
   }
   //Получаю теплейт карточки
   _getTemplate() {
@@ -42,19 +43,13 @@ class Card {
     this._cardElements.remove(this._cardElements);
   };
 
-  // попап карточки
-  _openCardPopup = () => {
-    this._popupImage.src = this._link;
-    this._popupImage.alt = this._name;
-    this._cardText.textContent = this._name;
-    openPopup(cardContainer);
-  };
-
   //слушатели событий
   _setEvtListener() {
     this._likeButton.addEventListener("click", this._likeCard); // лайк карточки
     this._deleteButton.addEventListener("click", this._deleteCard); // удаление карточки
-    this._elementImage.addEventListener("click", this._openCardPopup); // открытие попапа карточки
+    this._elementImage.addEventListener("click", () => {
+      this._handleCardClick(this._data);
+    }); // открытие попапа карточки
   }
 }
 
