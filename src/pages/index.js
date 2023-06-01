@@ -1,4 +1,4 @@
-import "./pages/index.css";
+import "./index.css";
 import {
   initialCards,
   validationConfig,
@@ -6,14 +6,14 @@ import {
   formCreatCard,
   profileEditButton,
   createCardButton,
-} from "./utils/constants.js";
+} from "../utils/constants.js";
 
-import Card from "./components/Card.js";
-import FormValidator from "./components/FormValidator.js";
-import Section from "./components/section.js";
-import PopupWithImage from "./components/PopupWithImage.js";
-import UserInfo from "./components/UserInfo.js";
-import PopupWithForm from "./components/PopupWithForm.js";
+import Card from "../components/Card.js";
+import FormValidator from "../components/FormValidator.js";
+import Section from "../components/section.js";
+import PopupWithImage from "../components/PopupWithImage.js";
+import UserInfo from "../components/UserInfo.js";
+import PopupWithForm from "../components/PopupWithForm.js";
 
 const formValidCreatCard = new FormValidator(validationConfig, formCreatCard);
 formValidCreatCard.enableValidation();
@@ -45,7 +45,7 @@ const cardList = new Section(
 cardList.renderItems(); // вызываю публичный метод перебора массива
 
 // форма профиля
-const popuProfileForm = new PopupWithForm({
+const popupEditProfile = new PopupWithForm({
   // передаю селектор попапа профиля
   popupSelector: ".popup_type_edit",
   handleFormSubmit: (dataForm) => {
@@ -53,30 +53,31 @@ const popuProfileForm = new PopupWithForm({
     //и параметру dataForm прилетает объект с полями попапа профиля
     userInfo.setUserInfo(dataForm); //вызываю метод присвоения заголовка и описания профиля и передаю
     //объект с полями попапа профиля
-    popuProfileForm.close();
+    popupEditProfile.close();
   },
 });
-popuProfileForm.setEventListeners();
+popupEditProfile.setEventListeners();
 
 //форма создания карточки
-const popupWithForm = new PopupWithForm({
+const popupAddCard = new PopupWithForm({
   popupSelector: ".popup_type_add",
   handleFormSubmit: (dataForm) => {
     const cardByForm = new Card(dataForm, ".card", popupImage.open);
     cardList.addItem(cardByForm.generateCard());
 
-    popupWithForm.close();
+    popupAddCard.close();
   },
 });
-popupWithForm.setEventListeners();
+popupAddCard.setEventListeners();
 
 //открытие попапа профиля по клику
 profileEditButton.addEventListener("click", () => {
-  popuProfileForm.open();
+  popupEditProfile.open();
+  popupEditProfile.setInputValues(userInfo.getUserInfo());
   formValidEdit.resetError();
 });
 //открытие попапа карточки по клику
 createCardButton.addEventListener("click", () => {
-  popupWithForm.open();
+  popupAddCard.open();
   formValidCreatCard.resetError();
 });

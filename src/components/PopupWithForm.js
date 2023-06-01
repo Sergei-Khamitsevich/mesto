@@ -4,9 +4,16 @@ class PopupWithForm extends Popup {
   constructor({ popupSelector, handleFormSubmit }) {
     super({ popupSelector });
     this._handleFormSubmit = handleFormSubmit;
-    this._formSelector = this._selector.querySelector(".popup__form");
+    this._formSelector = this._popupElement.querySelector(".popup__form");
     this._inputList = this._formSelector.querySelectorAll(".popup__item");
   }
+
+  setInputValues(data) {
+    this._inputList.forEach((input) => {
+       input.value = data[input.name]
+    })
+  }
+
   // генерация объекта с ключами полей попапа
   getInputValues() {
     // создаём пустой объект
@@ -27,8 +34,6 @@ class PopupWithForm extends Popup {
     this._formSelector.addEventListener("submit", (evt) => {
       evt.preventDefault();
       this._handleFormSubmit(this.getInputValues());
-
-      this._formSelector.reset();
     });
   }
 
